@@ -10,13 +10,13 @@ const getId = (req, res) => {
     if (foundBook != undefined) {
         return res.json(foundBook);
     } else {
-       return res.json({ message: "id does not exist" });
+       return res.json([]);
     } 
 };
 
 const getCategory = (req, res) => {
     const { category } = req.params;
-    const filterCategory = acervo.livros.filter((filme) => filme.categoria == category);
+    const filterCategory = acervo.livros.filter((filme) => filme.categoria.toLowerCase() == category.toLowerCase());
     return res.json(filterCategory);
 };
 
