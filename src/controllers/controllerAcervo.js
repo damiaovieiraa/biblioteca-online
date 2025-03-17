@@ -14,14 +14,28 @@ const getId = (req, res) => {
     } 
 };
 
-const getCategory = (req, res) => {
-    const { category } = req.params;
-    const filterCategory = acervo.livros.filter((filme) => filme.categoria.toLowerCase() == category.toLowerCase());
+const getCategoria = (req, res) => {
+    const { categoria } = req.params;
+    const filterCategory = acervo.livros.filter(filme => filme.categoria.toLowerCase() == categoria.toLowerCase());
     return res.json(filterCategory);
+};
+
+const getPreco = (req, res) => {
+    const { precoMaximo } = req.params;
+    const filterPreco = acervo.livros.filter(filme => filme.preco <= precoMaximo);
+    return res.json(filterPreco);
+};
+
+const getAno = (req, res) => {
+    const { ano } = req.params;
+    const filterAno = acervo.livros.filter(filme => filme.ano == ano);
+    return res.json(filterAno);
 };
 
 module.exports = {
     getAll,
     getId,
-    getCategory
+    getCategoria,
+    getPreco,
+    getAno
 };
