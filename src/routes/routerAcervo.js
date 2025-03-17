@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const acervo = require("../data/acervo.json");
+const controllerAcervo = require("../controllers/controllerAcervo");
 
-router.get("/acervo", (req, res) => {
-    res.json(acervo);
-});
+router.get("/livros", controllerAcervo.getAll);
+router.get("/livro/:id", controllerAcervo.getId);
+router.get("/livros/:category", controllerAcervo.getCategory);
 
 module.exports = router;
