@@ -1,9 +1,8 @@
 const express = require("express");
-const routerAcervo = require("./routes/routerAcervo");
+const router = require("./routes");
 
 const app = express();
 
-app.use(express.json());
-app.use(routerAcervo);
+router(app, express);
 
 module.exports = app;
