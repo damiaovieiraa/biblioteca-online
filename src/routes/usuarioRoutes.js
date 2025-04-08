@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const { buscarTudo, criarUsuario, deletarUsuario, atualizarUsuario } = require("../controllers/usuarioControllers");
+const { buscar, cadastrar, deletar, atualizar } = require("../controllers/usuarioControllers");
 const { validarUsuario } = require("../middlewares/usuarioMiddlewares");
 
 const router = Router();
 
-router.get("/", buscarTudo);
-router.post("/", validarUsuario, criarUsuario);
-router.delete("/:id", deletarUsuario);
-router.put("/:id", validarUsuario, atualizarUsuario);
+router.get("/", buscar);
+router.post("/", validarUsuario, cadastrar);
+router.delete("/:id", deletar);
+router.put("/:id", validarUsuario, atualizar);
 
 module.exports = router;

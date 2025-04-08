@@ -17,7 +17,7 @@ const sanitizedInputs = (reqBody) => {
     }
 }
 
-const buscarTudo = async (req, res) => {
+const buscar = async (req, res) => {
     try {
         const usuarios = await usuario.findAll();
         return res.json(usuarios);
@@ -26,7 +26,7 @@ const buscarTudo = async (req, res) => {
     }
 }
 
-const criarUsuario = async (req, res) => {
+const cadastrar = async (req, res) => {
     try {
         const novoUsuario = await usuario.create(sanitizedInputs(req.body));
         return res.status(201).json(novoUsuario);
@@ -35,7 +35,7 @@ const criarUsuario = async (req, res) => {
     }
 }
 
-const deletarUsuario = async (req, res) => {
+const deletar = async (req, res) => {
     const { id } = req.params;
     const sanitizedId = sanitize(id);
     try {
@@ -53,7 +53,7 @@ const deletarUsuario = async (req, res) => {
     }
 }
 
-const atualizarUsuario = async (req, res) => {
+const atualizar = async (req, res) => {
     const { id } = req.params;
    
     const sanitizedId = sanitize(id);
@@ -74,8 +74,8 @@ const atualizarUsuario = async (req, res) => {
 }
 
 module.exports = {
-    buscarTudo,
-    criarUsuario,
-    deletarUsuario,
-    atualizarUsuario
+    buscar,
+    cadastrar,
+    deletar,
+    atualizar
 }
