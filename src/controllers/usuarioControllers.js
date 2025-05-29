@@ -1,5 +1,6 @@
 const { usuario } = require("../models");
 const sanitize = require("sanitize-html");
+const bcrypt = require("bcrypt");
 
 const sanitizedInputs = (reqBody) => {
     const { nome, email, tipo, senha} = reqBody;
@@ -17,6 +18,11 @@ const sanitizedInputs = (reqBody) => {
     }
 }
 
+const criarHash = async (senha) => {
+    const hash = await bcrypt.hash(senha, 10);
+    return hash;
+};
+
 const buscar = async (req, res) => {
     try {
         const usuarios = await usuario.findAll();
@@ -27,9 +33,14 @@ const buscar = async (req, res) => {
 }
 
 const cadastrar = async (req, res) => {
+    const user = sanitizedInputs(req.body);
+
     try {
-        const novoUsuario = await usuario.create(sanitizedInputs(req.body));
-        return res.status(201).json(novoUsuario);
+        const senhaHash = await criarHash(user.senha);
+        user.senha = senhaHash;
+
+        const novoUsuario = await usuario.create(user);
+        return res.status(201).json({ message: "Usuário registrado" });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -55,17 +66,20 @@ const deletar = async (req, res) => {
 
 const atualizar = async (req, res) => {
     const { id } = req.params;
-   
     const sanitizedId = sanitize(id);
+    const userUpdated = sanitizedInputs(req.body);
 
     try {
-        const usuarioAtualizado = await usuario.update(sanitizedInputs(req.body), {
+        const senhaHash = await criarHash(userUpdated.senha);
+        userUpdated.senha = senhaHash;
+
+        const usuarioAtualizado = await usuario.update(userUpdated, {
             where: {
                 id_usuario: sanitizedId
             }
         });
         if (usuarioAtualizado[0] === 0) {
-            return res.status(400).json({ error: "Usuário não encontrado ou nenhum dado novo foi inserido" });
+            return res.status(404).json({ message: "Usuário não encontrado" });
         }
         return res.json({ message: "Usuário atualizado com sucesso" });
     } catch (error) {
