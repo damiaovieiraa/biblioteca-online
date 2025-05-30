@@ -14,7 +14,7 @@ const validarUsuario = [
     body("tipo")
         .notEmpty()
         .withMessage("O tipo é obrigatório.")
-        .isIn(["Aluno", "Professor", "Pesquisador"])
+        .isIn(["Aluno", "Professor", "Pesquisador", "Admin"])
         .withMessage("Tipo de usuário deve ser Aluno, Professor ou Pesquisador"),
     
     body("senha")

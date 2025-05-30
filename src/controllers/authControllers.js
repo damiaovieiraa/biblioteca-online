@@ -16,7 +16,7 @@ const realizarLogin = async (req, res) => {
     try {
         const user = await usuario.findOne({
             where: {email: sanitizedEmail},
-            attributes: ["nome", "email", "senha"]
+            attributes: ["nome", "email", "tipo", "senha"]
         });
         if (!user) {
             return res.status(404).json({ message: "Usuário não encontrado" });
@@ -28,7 +28,7 @@ const realizarLogin = async (req, res) => {
         }
 
         const token = jwt.sign(
-            {nome: user.nome, email: user.email},
+            {nome: user.nome, email: user.email, tipo: user.tipo},
             process.env.SECRET_JWT,
             {expiresIn: "1h"}
         );

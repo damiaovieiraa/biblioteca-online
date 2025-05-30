@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: "email"
     },
     tipo: {
-      type: DataTypes.ENUM('Aluno','Professor','Pesquisador'),
+      type: DataTypes.ENUM('Aluno','Professor','Pesquisador', 'Admin'),
       allowNull: true
     },
     senha: {
