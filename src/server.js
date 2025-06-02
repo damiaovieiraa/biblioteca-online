@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 async function startServer() {
     try {
-        // await sequelize.authenticate();
-        // console.log('Conexão com o banco de dados estabelecida com sucesso!');
+        await sequelize.authenticate();
+        console.log('Conexão com o banco de dados estabelecida com sucesso!');
 
         app.listen(PORT, () => {
             console.log(`Servidor rodando na porta ${PORT}`);

@@ -13,6 +13,10 @@
  *   get:
  *     summary: Lista todos os empréstimos
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     responses:
  *       200:
  *         description: Lista de empréstimos
@@ -29,6 +33,10 @@
  *   post:
  *     summary: Registra um novo empréstimo
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     requestBody:
  *       required: true
  *       content:
@@ -60,6 +68,10 @@
  *   put:
  *     summary: Atualiza dados de um empréstimo 
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id
@@ -96,6 +108,10 @@
  *   delete:
  *     summary: Remove um empréstimo
  *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id

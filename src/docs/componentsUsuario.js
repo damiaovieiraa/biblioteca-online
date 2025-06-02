@@ -13,6 +13,10 @@
  *   get:
  *     summary: Lista todos os usuários
  *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     responses:
  *       200:
  *         description: Lista de usuários retornada com sucesso
@@ -29,6 +33,10 @@
  *   put:
  *     summary: Atualiza um usuário
  *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id
@@ -72,6 +80,10 @@
  *   delete:
  *     summary: Remove um usuário
  *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id

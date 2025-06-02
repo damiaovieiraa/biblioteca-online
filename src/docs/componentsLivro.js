@@ -29,6 +29,10 @@
  *   post:
  *     summary: Adiciona um novo livro
  *     tags: [Livros]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     requestBody:
  *       required: true
  *       content:
@@ -67,6 +71,10 @@
  *   put:
  *     summary: Adiciona um novo livro
  *     tags: [Livros]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id
@@ -113,6 +121,10 @@
  *   delete:
  *     summary: Remove um livro
  *     tags: [Livros]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
  *     parameters:
  *       - in: path
  *         name: id

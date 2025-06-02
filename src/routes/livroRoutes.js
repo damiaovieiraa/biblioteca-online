@@ -5,7 +5,7 @@ const { autenticarJWT } = require("../middlewares/authMiddlwares");
 
 const router = Router();
 
-router.get("/", autenticarJWT, buscar);
+router.get("/", buscar);
 router.post("/", autenticarJWT, validarLivro, cadastrar);
 router.put("/:id", autenticarJWT, validarLivro, atualizar);
 router.delete("/:id", autenticarJWT, deletar);
