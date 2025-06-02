@@ -20,6 +20,5 @@ const autenticarJWT = (req, res, next) => {
 
 module.exports = {
     validarUsuario,
-    autenticarJWT,
-    autenticarJWTAdm
+    autenticarJWT
 };
