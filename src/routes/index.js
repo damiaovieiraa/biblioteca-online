@@ -9,4 +9,5 @@ module.exports = (app, express) => {
     app.use("/livros", livroRoutes);
     app.use("/emprestimos", emprestimoRoutes);
     app.use("/auth", authRoutes);
+    
 }
