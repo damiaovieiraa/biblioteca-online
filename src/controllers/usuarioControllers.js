@@ -58,7 +58,7 @@ const deletar = async (req, res) => {
         if (!deleted) {
             return res.status(404).json({ error: "Usuario não encontrado" });
         }
-        return res.json({ message: "Usuário excluído com sucesso" });
+        return res.json({ message: "Usuário removido com sucesso" });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

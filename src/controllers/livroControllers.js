@@ -49,7 +49,7 @@ const atualizar = async (req, res) => {
             }
         });
         if (livroAtualizado[0] === 0) {
-            return res.status(400).json({ error: "Livro não encontrado ou nenhum dado novo foi inserido" });
+            return res.status(404).json({ error: "Livro não encontrado" });
         }
         return res.json({ message: "Livro atualizado com sucesso" });
     } catch (err) {
@@ -68,7 +68,7 @@ const deletar = async (req, res) => {
         if (!deleted) {
             return res.status(404).json({ error: "Livro não encontrado" });
         }
-        return res.json({ message: "Livro excluído com sucesso" });
+        return res.json({ message: "Livro removido com sucesso" });
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }

@@ -39,6 +39,8 @@
  *         description: Usuário registrado
  *       400:
  *         description: Dados inválidos ou campos vazios
+ *       500:
+ *         description: Erro interno
  */
 
 /**
@@ -88,4 +90,6 @@
  *                 message:
  *                   type: string
  *                   example: Usuário não encontrado
+ *       500:
+ *         description: Erro interno
  */

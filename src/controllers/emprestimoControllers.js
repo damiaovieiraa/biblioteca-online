@@ -42,7 +42,7 @@ const atualizar = async function name(req, res) {
     const sanitizedId = parseInt(sanitize(id));
 
     try {
-        const query = `update Emprestimo 
+        const query = `update emprestimo 
                        set data_devolucao = :data_devolucao, status = :status 
                        where id_emprestimo = :id`
         const [result, meta] = await sequelize.query(query, {
@@ -54,7 +54,7 @@ const atualizar = async function name(req, res) {
             type: sequelize.QueryTypes.UPDATE
         });
         if (meta === 0) {
-            return res.status(400).json({ error: "Nenhuma alteração aconteceu: nenhum dado novo ou id inexiste" });
+            return res.status(400).json({ error: "Nenhum dado novo fornecido ou id inexiste" });
         }
         return res.status(200).json({ message: "Empréstimo atualizado com sucesso" });
     } catch (error) {
@@ -74,7 +74,7 @@ const deletar = async (req, res) => {
         if (!deleted) {
             return res.status(404).json({ error: "Empréstimo não encontrado"});
         }
-        return res.json({ message: "Empréstimo excluído com sucesso" });
+        return res.json({ message: "Empréstimo removido com sucesso" });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
