@@ -16,8 +16,6 @@
  *     responses:
  *       200:
  *         description: Lista de livros
- *       401:
- *         description: Token não fornecido, inválido ou expirado
  *       500:
  *         description: Erro interno
  */
