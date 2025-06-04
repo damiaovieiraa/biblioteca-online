@@ -61,6 +61,37 @@
  *         description: Erro interno
  */
 
+//POST
+/**
+ * @swagger
+ * /emprestimos/devolucoes:
+ *   post:
+ *     summary: Registra uma devolução de empréstimo
+ *     tags: [Empréstimos]
+ *     security:
+ *       - bearerAuth: []
+ *     description: > 
+ *         ⚠️ Esta rota exige autenticação via JWT. Primeiro registre-se e faça login para obter seu token.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               id_emprestimo:
+ *                 type: integer
+ *     responses:
+ *       200:
+ *         description: Devolução registrada com sucesso
+ *       400:
+ *         description: Livro já foi devolvido
+ *       404:
+ *         description: Empréstimo não encontrado
+ *       500:
+ *         description: Erro interno
+ */
+
 //PUT
 /**
  * @swagger
