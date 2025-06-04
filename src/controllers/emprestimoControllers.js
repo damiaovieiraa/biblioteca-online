@@ -62,6 +62,33 @@ const atualizar = async function name(req, res) {
     }
 }
 
+const registrarDevolucao = async (req, res) => {
+    const id = req.body.id_emprestimo;
+    const sanitizedId = sanitize(id);
+
+    try {
+        const emprest = await emprestimo.findOne({
+            where: {id_emprestimo: sanitizedId},
+            attributes: ["status"]
+        });
+
+        if (!emprest) return res.status(404).json({ message: "Empréstimo não encontrado" });
+        if (emprest.status === "Concluído") return res.status(400).json({ message: "Livro já foi devolvido" });
+
+        await sequelize.query(
+            "CALL RegistrarDevolucao(:id_emprestimo)",
+            {
+                replacements: { 
+                    id_emprestimo: sanitizedId
+                }
+            }
+        );
+        return res.json({ message: "Devolução registrada com sucesso" });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
 const deletar = async (req, res) => {
     const sanitizedId = parseInt(sanitize(req.params.id));
 
@@ -84,5 +111,6 @@ module.exports = {
     buscar,
     cadastrar,
     atualizar,
-    deletar
+    deletar,
+    registrarDevolucao
 }
