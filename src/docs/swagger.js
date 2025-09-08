@@ -23,7 +23,7 @@ const swaggerDefinition = {
     ],
     servers: [
         {
-            url: "https://biblioteca-online-2s7u.onrender.com"
+            url: "https://biblioteca-online-w014.onrender.com"
         }
     ]
 };
